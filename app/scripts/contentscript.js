@@ -14,10 +14,7 @@
 
 	// Don't refresh on different hostnames
 	if (options.hostname !== window.location.hostname) {
-		chrome.pageAction.hide();
 		return;
-	} else {
-		chrome.pageAction.show();
 	}
 
 	if (select.length) {
