@@ -1,3 +1,33 @@
 body {
-  padding: 20px;
+	background: #fafafa;
+	padding: 20px;
+	min-width: 300px;
+}
+h1 {
+	margin: 0 0 1em;
+	padding-bottom: 0.2em;
+	border-bottom: 1px solid #eee;
+}
+.formRow {
+	margin: 2em 0;
+}
+h2 {
+	font-size: 1.3em;
+}
+label {
+	font-size: 1em;
+	padding-right: 0.2em;
+}
+input[type=radio] {
+	margin-right: 1em;
+}
+input[type=range] {
+	display: inline-block;
+	vertical-align: middle;
+	width: 70%;
+	margin: 0 0.3em;
+}
+.rangeRow span {
+	font-size: 1em;
+	font-weight: bold;
 }
