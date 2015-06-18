@@ -1,13 +1,13 @@
 'use strict';
 
-$(function(){
+(function(){
 
 	var options = {
 		hostname: ['www.eventbrite.com','www.eventbrite.co.uk'],
 		tickets: 2,
 		autobuy: false,
 		refresh: false,
-		refreshRate: 1000
+		refreshRate: 10
 	};
 	// options.autobuy = true;
 	// options.refresh = true;
@@ -22,7 +22,10 @@ $(function(){
 	}
 
 	var $select = $('#TicketReg').find('select');
-	var $button = $('#OrderReg').find('a');
+	var $button = $('#primary_cta').find('a');
+	if (!$button.length) { // backup just in case
+		$button = $('#OrderReg').find('a');
+	}
 
 	if ($select.length) {
 		console.log('Ordering ' + options.tickets + ' tickets');
@@ -30,7 +33,7 @@ $(function(){
 		$select.val(options.tickets);
 
 		if (options.autobuy) {
-			$button.trigger('click');
+			$button[0].click();
 		}
 
 	} else if (options.refresh) {
