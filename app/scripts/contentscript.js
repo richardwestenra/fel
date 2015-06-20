@@ -2,24 +2,8 @@
 
 (function(){
 
-	var options = {
-		hostname: ['www.eventbrite.com','www.eventbrite.co.uk'],
-		tickets: 2,
-		autobuy: false,
-		refresh: false,
-		refreshRate: 10
-	};
-	// options.autobuy = true;
-	// options.refresh = true;
-
-
-	// Don't refresh on different hostnames
-	function isCorrectHost(){
-		return options.hostname.indexOf(window.location.hostname) > -1;
-	}
-	if (!isCorrectHost()) {
-		return;
-	}
+	var options = {};
+	var storage = chrome.storage.local;
 
 	var $select = $('#TicketReg').find('select');
 	var $button = $('#primary_cta').find('a');
@@ -27,23 +11,50 @@
 		$button = $('#OrderReg').find('a');
 	}
 
-	if ($select.length) {
-		console.log('Ordering ' + options.tickets + ' tickets');
 
-		$select.val(options.tickets);
+	function isCorrectHost(){
+		return options.hostname.indexOf(window.location.hostname) > -1;
+	}
 
-		if (options.autobuy) {
-			$button[0].click();
-		}
-
-	} else if (options.refresh) {
-		console.log('Refreshing in 1 second...');
-
+	function refresh(){
+		console.log('Refreshing in '+options.refreshRate+'ms...');
 		window.setTimeout(function(){
 			console.log('Refreshing!');
 			window.location.reload();
 		}, options.refreshRate);
-
 	}
+
+
+	function init(){
+		if (!isCorrectHost()) {
+			return;
+		}
+
+		if ($select.length) {
+			console.log('Ordering ' + options.tickets + ' tickets');
+
+			$select.val(options.tickets);
+
+			if (options.autobuy) {
+				$button[0].click();
+			}
+
+		} else if (options.refresh) {
+			refresh();
+		}
+	}
+
+	function loadChanges() {
+		storage.get('fel', function(items) {
+			if (items.fel) {
+				options = items.fel;
+				console.log(options);
+			}
+			init();
+		});
+	}
+
+	loadChanges();
+
 
 })();
