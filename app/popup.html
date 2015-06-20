@@ -13,9 +13,9 @@
   <body>
     <h1>FEL Ticket Auto-buyer</h1>
     <form>
-        <div class="formRow">
+        <div class="formRow radioRow">
             <h2>Auto-refresh</h2>
-            <input type="radio" class="radio" name="refresh" id="refreshOff" value="false" checked="checked"/>
+            <input type="radio" class="radio" name="refresh" id="refreshOff" value="false"/>
             <label for="refreshOff">Off</label>
             <input type="radio" class="radio" name="refresh" id="refreshOn" value="true"/>
             <label for="refreshOn">On</label>
@@ -24,16 +24,16 @@
             <h2>Refresh delay: <b id="refreshRateVal">10 ms</b></h2>
             <span>0s</span> <input type="range" class="range" name="refreshRate" id="refreshRate" value="1" min="0" max="1000"/> <span>10s</span>
         </div>
-        <div class="formRow">
+        <div class="formRow radioRow">
             <h2>Number of tickets</h2>
             <input type="radio" class="radio" name="tickets" id="one" value="1"/>
             <label for="one">One</label>
-            <input type="radio" class="radio" name="tickets" id="two" value="2" checked="checked"/>
+            <input type="radio" class="radio" name="tickets" id="two" value="2"/>
             <label for="two">Two</label>
         </div>
-        <div class="formRow">
+        <div class="formRow radioRow">
             <h2>Auto-purchase tickets</h2>
-            <input type="radio" class="radio" name="autobuy" id="purchaseOff" value="false" checked="checked"/>
+            <input type="radio" class="radio" name="autobuy" id="purchaseOff" value="false"/>
             <label for="purchaseOff">Off</label>
             <input type="radio" class="radio" name="autobuy" id="purchaseOn" value="true"/>
             <label for="purchaseOn">On</label>

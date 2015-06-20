@@ -36,7 +36,36 @@ function saveChanges(key, value) {
 	// Save it using the Chrome extension storage API.
 	storage.set({'fel': options}, function() {
 		// Notify that we saved.
-		message('Setting saved: '+key+' = '+value+'. Reload page to see changes.');
+		message('Setting saved. Reload page to see changes.');
+	});
+}
+
+function setRangeText(val){
+	var text = val / 1000 + ' seconds'; // convert to secs
+	if (val === 1000 ) {
+		text = '1 second';
+	} else if ( val < 1000) {
+		text = val + ' ms';
+	}
+	$('#refreshRateVal').text(text);
+}
+
+function updateFormValues(){
+	$('.radioRow').each(function(){
+		var name = $(this).find('input').first().attr('name');
+		var value = options[name];
+		$(this).find('input')
+			.attr('checked', false)
+			.filter('[value="'+value+'"]')
+			.attr('checked', true);
+	});
+
+	$('.range').each(function(){
+		var name = $(this).attr('name');
+		var value = options[name];
+		setRangeText(value);
+		value /= 10;
+		$(this).val( value );
 	});
 }
 
@@ -44,6 +73,7 @@ function loadChanges() {
 	storage.get('fel', function(items) {
 		if (items.fel) {
 			options = items.fel;
+			updateFormValues();
 			message('Loaded saved settings.');
 		}
 	});
@@ -54,18 +84,13 @@ function loadChanges() {
 loadChanges();
 
 
+
 $('input').on('input click change', function(){
 	var name = $(this).attr('name');
 	var val = convertType( $(this).val() );
 	if ($(this).hasClass('range')) {
 		val *= 10; // convert to time in ms
-		var text = val / 1000 + ' seconds'; // convert to secs
-		if (val === 1000 ) {
-			text = '1 second';
-		} else if ( val < 1000) {
-			text = val + ' ms';
-		}
-		$('#refreshRateVal').text(text);
+		setRangeText(val);
 	}
 	saveChanges(name, val);
 });

@@ -26,7 +26,7 @@
 
 
 	function init(){
-		if (!isCorrectHost()) {
+		if (isCorrectHost()) {
 			return;
 		}
 
