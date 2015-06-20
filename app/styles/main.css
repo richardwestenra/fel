@@ -1,7 +1,11 @@
 body {
-	background: #fafafa;
+	background: #fff;
+	color: #333;
 	padding: 20px;
 	min-width: 300px;
+}
+a {
+	color: steelblue;
 }
 h1 {
 	margin: 0 0 1em;

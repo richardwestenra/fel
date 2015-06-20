@@ -1,5 +1,6 @@
 'use strict';
 
+// Default settings
 var options = {
 	hostname: ['www.eventbrite.com','www.eventbrite.co.uk'],
 	tickets: 2,
@@ -12,11 +13,11 @@ var storage = chrome.storage.local;
 
 var timeout;
 function message(msg) {
-	$('.message').text(msg).slideDown(200);
+	$('.message').html(msg).slideDown(200);
 	clearTimeout(timeout);
 	timeout = setTimeout(function() {
 		$('.message').slideUp(600);
-	}, 3000);
+	}, 5000);
 }
 
 // Convert strings to Boolean/number values
@@ -36,7 +37,7 @@ function saveChanges(key, value) {
 	// Save it using the Chrome extension storage API.
 	storage.set({'fel': options}, function() {
 		// Notify that we saved.
-		message('Setting saved. Reload page to see changes.');
+		message('Setting saved. <a href="#" class="reload">Reload page</a> to see your changes.');
 	});
 }
 
@@ -69,12 +70,29 @@ function updateFormValues(){
 	});
 }
 
+function getInputEvents(){
+	$('input').on('input click change', function(){
+		var name = $(this).attr('name');
+		var val = convertType( $(this).val() );
+		if ($(this).hasClass('range')) {
+			val *= 10; // convert to time in ms
+			setRangeText(val);
+		}
+		saveChanges(name, val);
+	});
+	$('.message').on('click','.reload',function(e){
+		e.preventDefault();
+		chrome.tabs.reload();
+	});
+}
+
 function loadChanges() {
 	storage.get('fel', function(items) {
 		if (items.fel) {
 			options = items.fel;
 			updateFormValues();
-			message('Loaded saved settings.');
+			// message('Loaded saved settings.');
+			getInputEvents();
 		}
 	});
 }
@@ -84,14 +102,4 @@ function loadChanges() {
 loadChanges();
 
 
-
-$('input').on('input click change', function(){
-	var name = $(this).attr('name');
-	var val = convertType( $(this).val() );
-	if ($(this).hasClass('range')) {
-		val *= 10; // convert to time in ms
-		setRangeText(val);
-	}
-	saveChanges(name, val);
-});
 

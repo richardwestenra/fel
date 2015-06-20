@@ -26,7 +26,7 @@
 
 
 	function init(){
-		if (isCorrectHost()) {
+		if (!isCorrectHost()) {
 			return;
 		}
 
@@ -48,7 +48,6 @@
 		storage.get('fel', function(items) {
 			if (items.fel) {
 				options = items.fel;
-				console.log(options);
 			}
 			init();
 		});
