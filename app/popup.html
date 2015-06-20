@@ -13,31 +13,32 @@
   <body>
     <h1>FEL Ticket Auto-buyer</h1>
     <form>
-        <div class="formRow">
+        <div class="formRow radioRow">
             <h2>Auto-refresh</h2>
-            <label for="off">Off</label>
-            <input type="radio" class="radio" name="refresh" id="off" value="false" checked="checked"/>
-            <label for="on">On</label>
-            <input type="radio" class="radio" name="refresh" id="on" value="true"/>
+            <input type="radio" class="radio" name="refresh" id="refreshOff" value="false"/>
+            <label for="refreshOff">Off</label>
+            <input type="radio" class="radio" name="refresh" id="refreshOn" value="true"/>
+            <label for="refreshOn">On</label>
         </div>
         <div class="formRow rangeRow">
-            <h2>Refresh delay: <b id="refreshRateVal">500</b>ms</h2>
-            <span>0</span> <input type="range" class="range" name="refreshRate" id="refreshRate" value="500" min="0" max="10000"/> <span>10000</span>
+            <h2>Refresh delay: <b id="refreshRateVal">10 ms</b></h2>
+            <span>0s</span> <input type="range" class="range" name="refreshRate" id="refreshRate" value="1" min="0" max="1000"/> <span>10s</span>
         </div>
-        <div class="formRow">
+        <div class="formRow radioRow">
             <h2>Number of tickets</h2>
-            <label for="one">One</label>
             <input type="radio" class="radio" name="tickets" id="one" value="1"/>
+            <label for="one">One</label>
+            <input type="radio" class="radio" name="tickets" id="two" value="2"/>
             <label for="two">Two</label>
-            <input type="radio" class="radio" name="tickets" id="two" value="2" checked="checked"/>
         </div>
-        <div class="formRow">
+        <div class="formRow radioRow">
             <h2>Auto-purchase tickets</h2>
-            <label for="off">Off</label>
-            <input type="radio" class="radio" name="autobuy" id="off" value="false" checked="checked"/>
-            <label for="on">On</label>
-            <input type="radio" class="radio" name="autobuy" id="on" value="true"/>
+            <input type="radio" class="radio" name="autobuy" id="purchaseOff" value="false"/>
+            <label for="purchaseOff">Off</label>
+            <input type="radio" class="radio" name="autobuy" id="purchaseOn" value="true"/>
+            <label for="purchaseOn">On</label>
         </div>
+        <p class="message"></p>
     </form>
 
     <!-- build:js scripts/vendor.js -->

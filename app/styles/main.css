@@ -1,7 +1,11 @@
 body {
-	background: #fafafa;
+	background: #fff;
+	color: #333;
 	padding: 20px;
 	min-width: 300px;
+}
+a {
+	color: steelblue;
 }
 h1 {
 	margin: 0 0 1em;
@@ -16,10 +20,9 @@ h2 {
 }
 label {
 	font-size: 1em;
-	padding-right: 0.2em;
+	padding: 0 2em 0 0.2em;
 }
 input[type=radio] {
-	margin-right: 1em;
 }
 input[type=range] {
 	display: inline-block;
@@ -30,4 +33,7 @@ input[type=range] {
 .rangeRow span {
 	font-size: 1em;
 	font-weight: bold;
+}
+.message {
+	display: none;
 }
