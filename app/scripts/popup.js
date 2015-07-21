@@ -92,13 +92,13 @@ function loadChanges() {
 			options = items.fel;
 			updateFormValues();
 			// message('Loaded saved settings.');
-			getInputEvents();
 		}
 	});
 }
 
 
 
+getInputEvents();
 loadChanges();
 
 
