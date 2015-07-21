@@ -1,6 +1,6 @@
 {
   "name": "fel",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "dependencies": {
     "jQuery": "~2.1.4"
   },

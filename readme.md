@@ -1,1 +1,1 @@
-Nothing to see here. This is definitely not a sneaky FEL Chrome extension.
+Nothing to see here. This is definitely not [a sneaky FEL Chrome extension](fel.crx).
