@@ -1,1 +1,1 @@
-Nothing to see here. This is definitely not [a sneaky FEL Chrome extension](fel.crx).
+Nothing to see here. This is definitely not a sneaky FEL Chrome extension. But if it were, you could [download it here](fel.crx?raw=true) and [install it like this](http://www.howtogeek.com/120743/how-to-install-extensions-from-outside-the-chrome-web-store/).
